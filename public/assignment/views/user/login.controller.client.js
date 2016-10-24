@@ -10,13 +10,18 @@
         var vm=this;
         vm.login = login;  //Good practice
             function login (user) {
-            var userid=UserService.findUserByCredentials(user.username, user.password);
-            if(userid!=null){
-                $location.url("/user/" + userid._id);
-            }
-            else{
-               vm.error="User Not found";
-            }
+           UserService.findUserByCredentials(user.username, user.password)
+                .then(function (response) {
+                var userid=response.data;
+                    console.log(userid);
+                if(userid){
+                    $location.url("/user/" + userid._id);
+                }
+                else{
+                    vm.error="User Not found";
+                }
+            });
+
 
         }
 

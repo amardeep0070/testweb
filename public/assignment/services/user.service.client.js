@@ -6,14 +6,9 @@
         .module("WebAppMaker")
         .factory("UserService",UserService);
 
-    var users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder" , emailId:"alice.wonder@gmail.com" },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley" , emailId:"bob.marley@gmail.com"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia" , emailId:"charly.garcia@gmail.com"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" ,emailId:"jose.annunzi@gmail.com" }
-    ];
 
-    function UserService() {
+
+    function UserService($http) {
         var api={
             createUser:createUser,
             findUserByCredentials:findUserByCredentials,
@@ -51,13 +46,8 @@
 
         }
         function findUserByCredentials (username,password) {
-            for(var i in users){
-                if(users[i].username===username && users[i].password===password)
-                {
-                    return users[i];
-
-                }
-            }
+            var url = "/api/user?username=" + username + "&password=" + password;
+            return $http.get(url);
         }
         function findUserById(id) {
             for(var i in users){
