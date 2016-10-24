@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div>
+            <p class ="navbar-text pull-left">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new" , class="navbar-link">
+                    <span class = "glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand" id="Profile "href="#">
+                Create Widget
+            </a>
+            <p class ="navbar-text pull-right">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" ng-click="model.createWidget(model.widget)" , class="navbar-link">
+                    <span class = "glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="model.widget.name">
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text" placeholder="Title of the heading" ng-model="model.widget.text">
+        </div>
+        <div class="form-group">
+            <label for="size">Size</label>
+            <input type="number" min="1" max="6" class="form-control" id="size" placeholder="Size(1-6)" ng-model="model.widget.size">
+        </div>
+        <a class="btn btn-primary  btn-block"
+           href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" ng-click="model.createWidget(model.widget)">Create</a>
+    </form>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div>
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.uid}}" class="navbar-link pull-right"> <span class="glyphicon glyphicon-user"></span></a>
+            </p>
+        </div>
+    </div>
+</nav>
+
