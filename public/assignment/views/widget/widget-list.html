@@ -2,7 +2,7 @@
     <div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets | orderBy : 'order' " >
         <div class=" pull-right list-element-menu zero-right-padding">
             <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" ><span class="glyphicon glyphicon-cog"></span></a>
-            <a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+            <a href=""><span class="glyphicon glyphicon-menu-hamburger"></span></a>
         </div>
         <!-- <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" class="pull-right"><span class="glyphicon glyphicon-cog" ></span></a>-->
         <div ng-switch="widget.size" ng-switch-when="HEADER">
