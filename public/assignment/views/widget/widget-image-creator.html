@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div >
+        <div class="container">
+            <p class ="navbar-text pull-left">
+                <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new" , class="navbar-link">
+                    <span class = "glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </p>
+            <a class="navbar-brand" id="Profile "href="#">
+                Create Widget
+            </a>
+            <p class ="navbar-text pull-right">
+                <a href="" , class="navbar-link" ng-click="model.createWidget(model.widget)">
+                    <span class = "glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="model.widget.name">
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" class="form-control" id="text" placeholder="Your Text Here" ng-model="model.widget.description">
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text" class="form-control" id="width" placeholder="Width in %" ng-model="model.widget.width" >
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="url" class="form-control" id="url" placeholder="http://imgblur.com/amar" ng-model="model.widget.url">
+        </div>
+
+    </form>
+    <div class="form-group">
+        <form id="image" action="/api/upload"  method="post" enctype="multipart/form-data">
+            <label>Upload</label>
+            <input name="myFile" type="file" class="form-control"/>
+            <input name="width" value="{{model.widget.width}}" style="display: none"/>
+            <input name="widgetId" value="{{model.wgid}}" style="display: none"/>
+            <input name="userId" value="{{model.uid}}" style="display: none"/>
+            <input name="pageId" value="{{model.pid}}" style="display: none"/>
+            <input name="websiteId" value="{{model.wid}}" style="display: none"/>
+            <input name="name" value="{{model.widget.name}}" style="display: none">
+            <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+        </form>
+    </div>
+    <a class="btn btn-primary  btn-block"
+       href="" ng-click="model.createWidget(model.widget)">Create</a>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div >
+        <div class="container">
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.uid}}" class="navbar-link pull-right"> <span class="glyphicon glyphicon-user"></span></a>
+            </p>
+        </div>
+    </div>
+</nav>
