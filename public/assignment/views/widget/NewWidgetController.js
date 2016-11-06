@@ -26,8 +26,11 @@
            WidgetService
                .createWidget(vm.pid,widget)
                .success(function (result) {
-                   console.log("Widget Created");
+                  // console.log("Widget Created");
                    $location.url("/user/" + vm.uid+ "/website/" + vm.wid+ "/page/" + vm.pid + "/widget");
+               })
+               .error(function (error) {
+                   console.log("server error")
                })
 
         }
