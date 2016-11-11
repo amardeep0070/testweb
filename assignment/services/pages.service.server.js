@@ -41,7 +41,7 @@ module.exports = function (app) {
     function deletePage(req,res) {
         var pid=req.params.pageId;
         for(var p in pages) {
-            if(pages[p]._id == pid) {
+            if(pages[p]._id === pid) {
                 pages.splice(p, 1);
             }
         }
@@ -51,7 +51,7 @@ module.exports = function (app) {
         var updatedPage = req.body;
         var pid = req.params.pageId;
         for(var p in pages) {
-            if(pages[p]._id == pid) {
+            if(pages[p]._id === pid) {
                 pages[p] = updatedPage;
             }
         }

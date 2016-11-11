@@ -68,7 +68,7 @@ module.exports= function (app) {
         var updatedWidget = req.body;
         var widgetId = req.params.widgetId;
         for(var w in widgets) {
-            if(widgets[w]._id == widgetId) {
+            if(widgets[w]._id === widgetId) {
                 updatedWidget.order=widgets[w].order;
                 widgets[w] = updatedWidget;
             }
@@ -110,7 +110,7 @@ module.exports= function (app) {
         var pageId        = request.body.pageId;
         var myFile        = request.file;
         var nameGiven     =request.body.name
-        console.log(nameGiven);
+      //  console.log(nameGiven);
         var widgetPresent=widgetPresent1(widgetId);
         if(widgetPresent){
             widgetPresent.url = "/uploads/" + myFile.filename

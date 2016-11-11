@@ -15,6 +15,9 @@
                 .success(function (result) {
                     vm.websiteList=result;
                 })
+                .error(function () {
+                    console.log("Server Error");
+                })
         }
 
     }

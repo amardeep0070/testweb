@@ -2,7 +2,6 @@
  * Created by Amardeep on 03/11/16.
  */
 module.exports = function(app){
-    console.log("in here");
     var websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456" , "description" : "facebook bro"},
         { "_id": "234", "name": "Tweeter",     "developerId": "456" ,"description" : "twitter bro"},
@@ -24,7 +23,7 @@ module.exports = function(app){
     }
     function findAllWebsitesForUser(req,res) {
         var uid = req.params.userId;
-        console.log(uid);
+      //  console.log(uid);
         var result = [];
         for(var w in websites) {
             if(websites[w].developerId === uid) {
@@ -45,7 +44,7 @@ module.exports = function(app){
     function deleteWebsite(req,res) {
         var wid=req.params.websiteId;
         for(var w in websites) {
-            if(websites[w]._id == wid) {
+            if(websites[w]._id === wid) {
                 websites.splice(w, 1);
             }
         }
@@ -55,7 +54,7 @@ module.exports = function(app){
         var updatedWebsite = req.body;
         var wid = req.params.websiteId;
         for(var w in websites) {
-            if(websites[w]._id == wid) {
+            if(websites[w]._id === wid) {
                 websites[w] = updatedWebsite;
             }
         }

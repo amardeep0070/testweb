@@ -6,7 +6,7 @@ module.exports = function(app) {
         {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
     ];
-    console.log("in");
+
 
     app.post('/api/user', createUser);
     app.get('/api/user', findUser);
@@ -17,7 +17,7 @@ module.exports = function(app) {
     function unregisterUser(req, res) {
         var uid = req.params.uid;
         for(var u in users) {
-            if(users[u]._id == uid) {
+            if(users[u]._id === uid) {
                 users.splice(u, 1);
             }
         }
@@ -28,7 +28,7 @@ module.exports = function(app) {
         var user = req.body;
         var uid = req.params.uid;
         for(var u in users) {
-            if(users[u]._id == uid) {
+            if(users[u]._id === uid) {
                 users[u] = user;
             }
         }

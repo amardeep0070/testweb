@@ -38,6 +38,9 @@
                     init();
                     $location.url("/user/" + vm.id+"/website");
                 })
+                .error(function () {
+                    console.log("Server Error")
+                })
 
         }
         function updateWebsite(newWebsite) {
@@ -47,7 +50,7 @@
                     $location.url("/user/" + vm.id+"/website");
                 })
                 .error(function () {
-
+                    console.log("Server Error")
                 })
         }
 
