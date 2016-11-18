@@ -1,0 +1,52 @@
+<!-- Navigation -->
+<script src="js/main.js"></script>
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <li class="sidebar-brand">
+            <a href="#top" onclick=$("#menu-close").click();>Start Bootstrap</a>
+        </li>
+        <li>
+            <a href="#top" onclick=$("#menu-close").click();>Home</a>
+        </li>
+        <li>
+            <a href="#about" onclick=$("#menu-close").click();>About</a>
+        </li>
+        <li>
+            <a href="#services" onclick=$("#menu-close").click();>Services</a>
+        </li>
+        <li>
+            <a href="#portfolio" onclick=$("#menu-close").click();>Portfolio</a>
+        </li>
+        <li>
+            <a href="#contact" onclick=$("#menu-close").click();>Contact</a>
+        </li>
+    </ul>
+</nav>
+<header>
+    <div class="container header m-scene">
+        <div class="intro-text m-aside scene_element scene_element--fadein">
+            <div class="intro-lead-in">Your Gate Way to Music Unity</div>
+
+            <div class="container ">
+                <input type="text "
+                       ng-model="model.user.username"
+                       class="form-control incSize "
+                       placeholder="username"/>
+                <br>
+                <input type="password "
+                       ng-model="model.user.password"
+                       class="form-control incSize "
+                       placeholder="password"/>
+
+                <br>
+                <button class="btn btn-primary btn-block" href="#" ng-click="model.login(model.user)"
+                >Login</button>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
