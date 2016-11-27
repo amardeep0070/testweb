@@ -1,451 +1,143 @@
-/* lg */ 
+/* Responsive styles
+================================================== */
+/* Large Devices, Wide Screens */
 @media (min-width: 1200px) {
-  
+  /* Dropdown animation */
+  .navbar-nav .dropdown-menu,
+  .navbar-nav .dropdown.megamenu div.dropdown-menu {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    display: block;
+    opacity: 0;
+    z-index: 1;
+    visibility: hidden;
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transition: visibility 500ms, opacity 500ms, -webkit-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
+    -moz-transition: visibility 500ms, opacity 500ms, -moz-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
+    -o-transition: visibility 500ms, opacity 500ms, -o-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
+    -ms-transition: visibility 500ms, opacity 500ms, -ms-transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
+    transition: visibility 500ms, opacity 500ms, transform 500ms cubic-bezier(0.43, 0.26, 0.11, 0.99);
+  }
+  .navbar-nav .dropdown:hover div.dropdown-menu,
+  .navbar-nav .dropdown.megamenu:hover div.dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    color: #777;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+  .navbar-nav .dropdown-backdrop {
+    visibility: hidden;
+  }
 }
-
-/* md */
-@media (min-width: 992px) and (max-width: 1199px) {
-
-  .navbar-right {
-    padding: 0 30px 0 0;
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+@media only screen and (max-width: 767px) {
+  .title {
+    font-size: 40px;
   }
-
-  .navbar-right li a {
-    padding: 35px 15px;
+  .navbar-header .navbar-brand a {
+    padding: 6px 8px;
   }
-
-  .fixed-menu .container {
-    width: 100%;
+  #hero-area {
+    padding: 140px 0;
   }
-
-  .fixed-menu .navbar-right {
-    padding-right: 30px;
+  #hero-area .btn {
+    margin-top: 8px;
   }
-
-  .fixed-menu .navbar-right li a {
-    padding: 20px;
+  #about {
+    padding: 70px 0;
   }
-
-  
-  #countdown li {
-    margin-right: 30px;
-  }
-
-  .guitar {
-    right:0;
-  }
-
-  .guitar2 {
-    height: 100%
-  }
-
-    .guitar2 img {
-      padding-top: 20%;
-    }
-
-  .ear-piece {
-    left: -15%;
-  }
-
-  #event .col-md-9 {
-    z-index: 10;
-  }
-
-
-}
-
-/* sm */
-@media (min-width: 768px) and (max-width: 991px) {
-
-  .navbar-brand {
-    width: 215px;
-    height: 60px;
-  }
-
-  .navbar-right {
+  #about .block {
     padding: 0;
   }
-
-  .navbar-right li a {
-    padding:20px 11px;
-    font-size: 17px;
+  figure .buttons {
+    left: 16%;
   }
-
-  .fixed-menu .container {
-    width: 100%;
+  #feature .media {
+    margin: 0px 0px 35px;
   }
-
-  .fixed-menu .navbar-right {
-    padding-right: 30px;
+  #footer .copyright {
+    text-align: center;
   }
-
-  .fixed-menu .navbar-right li a {
-    padding: 20px 15px;
-    font-size: 17px;
+  #footer .social {
+    text-align: center;
   }
- 
- #countdown li {
-  margin-right: 15px;
- }
-
-  .sponsor-control-left {
-    right:8%;
-  }
-
-  .sponsor-control-right {
-    right: 5%;
-  }
-
-  .guitar, .ear-piece, .light {
-    display: none;
-  }
-
-  .watch {
-    left: -8%
-  }
-
-  .guitar2 {
-    height: 100%;
-  }
-
-  .guitar2 img {
-    padding-top:38%;
-  }
-
-  .twit {
-    left: -5%;
-  }
-
-
-}
-
-/* xs */
-@media (max-width: 767px) {
-
-  .main-nav .container {
-    display: none;
-  }
-  
-  .fixed-menu .container {
+  .dropdown-menu > ul > li > a {
     display: block;
-  }
-
-   .fixed-menu .container {
-    width: 100%;
-  }
-
-  .navbar-brand {
-    width: inherit;
-  }
-
-  .fixed-menu .navbar-right li a {
-    padding: 7px 25px;
-  }
-
-  #home {
-    margin-top: 10%;
-  }
-
-  #main-slider .carousel-caption {
-    bottom: 17%;
-    padding: 10px;
-    line-height: 0;
-  }
-
-  #main-slider .carousel-caption h2 {
-    font-size: 20px;
-    margin-top: 3px;
-  }
-
-  #main-slider .carousel-caption h4 {
-    font-size: 16px;
-  }
-
-  #main-slider .carousel-caption a {
     font-size: 14px;
-    color: #2da1c5;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    padding: 15px;
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-
-  #explore {
-    background-size:cover;
+  .dropdown-menu > ul {
+    list-style: none;
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: -5px;
+    background: #fff;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 0.09px rgba(0, 0, 0, 0.15);
   }
-
-  #explore h2 {
-    float: inherit;
-    font-size: 30px;
-    margin-bottom: 30px;
-  }  
-
-  #countdown li {
-    font-size: 14px;
-    margin-right:35px;
-    width:inherit;
+  .navbar-collapse {
+    background: #333333;
   }
-
-  #countdown li span {
-    font-size: 24px;
-    height: 60px;
-    line-height: 60px;
-    width: 60px;
+  #top-bar .main-menu li > a {
+    color: #fff;
+    padding: 21px 10px;
+    background: transparent;
   }
-
-  #countdown li:before, 
-  #countdown li:after {
-    top:25px;
+  #top-bar .dropdown-menu > ul {
+    list-style: none;
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: -5px;
+    background: #fff;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 0.09px rgba(0, 0, 0, 0.15);
   }
-
-  .cart a {
-    font-size: 18px;
-  }
-
-  .cart a i {
-    font-size: 20px;
-    padding:15px;
-  }
-
-   /*event */
-  .single-event {
-    margin-bottom: 40px;
-  }
-
-
-  #event h2, 
-  #about h2, 
-  #sponsor h2 {
-    font-size: 30px;
-  }
-
-  .twitter-control-left, 
-  .twitter-control-right {
-    top: inherit;
-    bottom: -40px;
-  }
-
-  .twitter-control-left {
-    left: 46%;
-  }
-
-  .twitter-control-right {
-    right: 46%;
-  }
-
-  #sponsor {
-    background-position: right 0 bottom 0;
-  }
-
-  .sponsor-control-left, 
-  .sponsor-control-right {
-    top:0;
-  }
-
-  .sponsor-control-left {
-    right: 10%;
-  }
-
-  .sponsor-control-right {
-    right: 5%;
-  }
-
-  #sponsor .item ul li {
-    width: 30%;
-    margin-right:3%
-  }
-
-  #sponsor .item ul li:last-child {
-    margin-right: 0;
-   }
-
-
-  #footer {
-    font-size: 16px;
-  }
-
-  .watch, .guitar, .guitar2, .twit, .light, .ear-piece {
-    display: none;
-  }
-
-  .contact-section {
-    background-position: left 0 bottom 0;
-    background-size: cover;
-  }
-
-  .about-content {
-    width: 100%;    
-    padding: 70px 25px 110px;
-  }
-
-}
-
-/* XS Portrait */
-@media (max-width: 479px) {
-
-  .main-nav .container {
-    display: none;
-  }
-
-  .fixed-menu .container {
+  #top-bar .dropdown-menu > ul > li > a {
     display: block;
-  }
-
-  .fixed-menu .navbar-right li a {
-    padding: 10px 25px;
-  }
-
-  /* Home */
-
-  #home {
-    margin-top: 18%;
-  }
-
-  .fixed-menu .container {
-    width: 100%;
-  }
-
-  .navbar-brand {
-    width: inherit;
-  }
-
-
-  #main-slider .carousel-caption {
-    bottom: 17%;
-    padding: 10px;
-    line-height: 0;
-  }
-
-  #main-slider .carousel-caption h2 {
-    font-size: 18px;
-    margin-top: 3px;
-  }
-
-  #main-slider .carousel-caption h4 {
     font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    padding: 15px;
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-
-  #main-slider .carousel-caption a {
-    font-size: 12px;
-    color: #2da1c5;
-  }
-
-  .carousel-indicators {
-    bottom: 0;
-  }
-
-  /* Explore */
-  #explore {
-    background-size:cover;
-  }
-
-  #explore h2 {
-    float: inherit;
-    font-size: 30px;
-    margin-bottom: 30px;
-  }  
-
-  #countdown li {
-    font-size: 14px;
-    margin-right: 15px;
-    width: 45px;
-  }
-
-  #countdown li span {
-    font-size: 20px;
-    height: 45px;
-    line-height: 45px;
-    width: 45px;
-  }
-
-  #countdown li:before, 
-  #countdown li:after {
-    top: 18px
-  }
-
-  .cart {
-    right:-209px;
-  }
-
-  .cart a {
-    font-size: 18px;
-  }
-
-  .cart a i {
-    font-size: 20px;
-    padding:12px;
-  }
-
-    /*event */
-  .single-event {
-    margin-bottom: 40px;
-  }
-
-  .about-content {
-    width: 100%;    
-    padding: 70px 30px 110px;
-  }
-
-  #event h2, 
-  #about h2, 
-  #sponsor h2 {
-    font-size: 30px;
-  }
-
-  .about-content p, 
-  #twitter-feed .item a, 
-  #twitter-feed .item p {
-    font-size: 15px;
-  }
-
-  .twitter-control-left, 
-  .twitter-control-right {
-    top: inherit;
-    bottom: -40px;
-  }
-
-  .twitter-control-left {
-    left: 46%;
-  }
-
-  .twitter-control-right {
-    right: 46%;
-  }
-
-  #sponsor {
-    background-position: right 0 bottom;
-  }
-
-  .sponsor-control-left, 
-  .sponsor-control-right {
-    top: 0;
-  }
-
-  .sponsor-control-left {
-    right: 10%;
-  }
-
-  .sponsor-control-right {
-    right: 5%;
-  }
-
-  #sponsor .item ul li {
-    width: 45%;
-    margin-right: 5%
-  }
-
-  #sponsor .item ul li:last-child {
-    margin-right: 0;
-   }
- 
-  #footer {
-    font-size: 14px;
-  }
-
-  .watch, .guitar, .guitar2, .twit, .light, .ear-piece {
-    display: none;
-  }
-
-  .contact-section {
-    background-position: left 0 bottom 0;
-    background-size: cover;
-  }
-
 }
-
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */

@@ -1,0 +1,50 @@
+<div class="container wam-sortable" id="widgetList">
+    <div ng-switch="widget.type" ng-repeat="widget in model.widgets | orderBy : 'order' " >
+        <div class=" pull-right list-element-menu zero-right-padding">
+            <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" ><span class="glyphicon glyphicon-cog"></span></a>
+            <a href=""><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+        </div>
+        <!-- <a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" class="pull-right"><span class="glyphicon glyphicon-cog" ></span></a>-->
+        <div ng-switch="widget.size" ng-switch-when="HEADER">
+
+            <h1 ng-switch-when="1">{{widget.text}}</h1>
+            <h2 ng-switch-when="2">{{widget.text}}</h2>
+            <h3 ng-switch-when="3">{{widget.text}}</h3>
+            <h4 ng-switch-when="4">{{widget.text}}</h4>
+            <h5 ng-switch-when="5">{{widget.text}}</h5>
+            <h6 ng-switch-when="6">{{widget.text}}</h6>
+            <h1 ng-switch-default>{{widget.text}}</h1>
+        </div>
+        <div class="youtube-widget" ng-switch-when="YOUTUBE" >
+            <iframe width="{{widget.width}}" height="315" ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div ng-switch-when="IMAGE">
+            <img width="{{widget.width}}" ng-src="{{model.checkSafeImage(widget.url)}}">
+        </div>
+        <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
+
+        </div>
+        <div ng-switch-when="TEXT">
+            <div ng-if="widget.formatted" text-angular
+                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                             ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                             ['indent','outdent'],['html']]"></div>
+            <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   name="{{widget.name}}"
+                   id="{{widget._id}}textInput"
+                   value="{{widget.text}}"
+                   placeholder="{{widget.placeholder}}"
+                   class="form-control"/>
+            <textarea ng-if="widget.rows > 1 && !widget.formatted"
+                      name="{{widget.name}}"
+                      rows="{{widget.rows}}"
+                      id="{{widget._id}}textArea"
+                      placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
+        </div>
+        <div ng-switch-default>
+            Unable to render widget
+        </div>
+    </div>
+    </div>
+</div>

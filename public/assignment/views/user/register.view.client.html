@@ -1,0 +1,22 @@
+ <div class="container">
+     <div ng-show="model.error" class="alert alert-danger" role ="alert">
+         {{model.error}}</div>
+        <h1>Register</h1>
+        <input type="text"
+               class="form-control"
+               ng-model="model.user.username"
+               placeholder="username"/>
+        <input type="password"
+               class="form-control"
+               ng-model="model.user.password"
+               placeholder="password"/>
+        <input type="password"
+               class="form-control"
+               ng-model="model.user.verify"
+               placeholder="veryify password"/>
+        <a class="btn btn-primary btn-block" ng-click="model.createUser(model.user)"
+           href="">Register</a>
+        <a class="btn btn-danger  btn-block"
+           href="#login">Cancel</a>
+         {{model.username}}
+    </div>

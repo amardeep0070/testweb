@@ -1,150 +1,118 @@
-jQuery(function($) {'use strict',
-	
-	//Countdown js
-	 $("#countdown").countdown({
-			date: "10 july 2017 12:00:00",
-			format: "on"
-		},
-		
-		function() {
-			// callback function
-		});
-	
+(function($){
+    $.fn.scrollingTo = function( opts ) {
+        var defaults = {
+            animationTime : 1000,
+            easing : '',
+            callbackBeforeTransition : function(){},
+            callbackAfterTransition : function(){}
+        };
 
-	
-	//Scroll Menu
+        var config = $.extend( {}, defaults, opts );
 
-	function menuToggle()
-	{
-		var windowWidth = $(window).width();
+        $(this).click(function(e){
+            var eventVal = e;
+            e.preventDefault();
 
-		if(windowWidth > 767 ){
-			$(window).on('scroll', function(){
-				if( $(window).scrollTop()>405 ){
-					$('.main-nav').addClass('fixed-menu animated slideInDown');
-				} else {
-					$('.main-nav').removeClass('fixed-menu animated slideInDown');
-				}
-			});
-		}else{
-			
-			$('.main-nav').addClass('fixed-menu animated slideInDown');
-				
-		}
-	}
+            var $section = $(document).find( $(this).data('section') );
+            if ( $section.length < 1 ) {
+                return false;
+            };
 
-	menuToggle();
-	
-	
-	// Carousel Auto Slide Off
-	$('#event-carousel, #twitter-feed, #sponsor-carousel ').carousel({
-		interval: false
-	});
+            if ( $('html, body').is(':animated') ) {
+                $('html, body').stop( true, true );
+            };
+
+            var scrollPos = $section.offset().top;
+
+            if ( $(window).scrollTop() == scrollPos ) {
+                return false;
+            };
+
+            config.callbackBeforeTransition(eventVal, $section);
+
+            $('html, body').animate({
+                'scrollTop' : (scrollPos+'px' )
+            }, config.animationTime, config.easing, function(){
+                config.callbackAfterTransition(eventVal, $section);
+            });
+        });
+    };
+}(jQuery));
 
 
-	// Contact form validation
-	var form = $('.contact-form');
-	form.submit(function () {'use strict',
-		$this = $(this);
-		$.post($(this).attr('action'), function(data) {
-			$this.prev().text(data.message).fadeIn().delay(3000).fadeOut();
-		},'json');
-		return false;
-	});
 
-	$( window ).resize(function() {
-		menuToggle();
-	});
+jQuery(document).ready(function(){
+	"use strict";
+	new WOW().init();
 
-	$('.main-nav ul').onePageNav({
-		currentClass: 'active',
-	    changeHash: false,
-	    scrollSpeed: 900,
-	    scrollOffset: 0,
-	    scrollThreshold: 0.3,
-	    filter: ':not(.no-scroll)'
-	});
+
+(function(){
+ jQuery('.smooth-scroll').scrollingTo();
+}());
 
 });
 
 
-// Google Map Customization
-(function(){
-
-	var map;
-
-	map = new GMaps({
-		el: '#gmap',
-		lat: 43.04446,
-		lng: -76.130791,
-		scrollwheel:false,
-		zoom: 16,
-		zoomControl : false,
-		panControl : false,
-		streetViewControl : false,
-		mapTypeControl: false,
-		overviewMapControl: false,
-		clickable: false
-	});
-
-	var image = 'images/map-icon.png';
-	map.addMarker({
-		lat: 43.04446,
-		lng: -76.130791,
-		icon: image,
-		animation: google.maps.Animation.DROP,
-		verticalAlign: 'bottom',
-		horizontalAlign: 'center',
-		backgroundColor: '#3e8bff',
-	});
 
 
-	var styles = [ 
+$(document).ready(function(){
 
-	{
-		"featureType": "road",
-		"stylers": [
-		{ "color": "#b4b4b4" }
-		]
-	},{
-		"featureType": "water",
-		"stylers": [
-		{ "color": "#d8d8d8" }
-		]
-	},{
-		"featureType": "landscape",
-		"stylers": [
-		{ "color": "#f1f1f1" }
-		]
-	},{
-		"elementType": "labels.text.fill",
-		"stylers": [
-		{ "color": "#000000" }
-		]
-	},{
-		"featureType": "poi",
-		"stylers": [
-		{ "color": "#d9d9d9" }
-		]
-	},{
-		"elementType": "labels.text",
-		"stylers": [
-		{ "saturation": 1 },
-		{ "weight": 0.1 },
-		{ "color": "#000000" }
-		]
-	}
 
-	];
 
-	map.addStyle({
-		styledMapName:"Styled Map",
-		styles: styles,
-		mapTypeId: "map_style"  
-	});
 
-	map.setStyle("map_style");
-}());
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 50) {
+            $(".navbar-brand a").css("color","#fff");
+            $("#top-bar").removeClass("animated-header");
+        } else {
+            $(".navbar-brand a").css("color","inherit");
+            $("#top-bar").addClass("animated-header");
+        }
+    });
+
+    $("#clients-logo").owlCarousel({
+ 
+        itemsCustom : false,
+        pagination : false,
+        items : 5,
+        autoplay: true,
+
+    })
+
+});
+
+
+
+// fancybox
+$(".fancybox").fancybox({
+    padding: 0,
+
+    openEffect : 'elastic',
+    openSpeed  : 450,
+
+    closeEffect : 'elastic',
+    closeSpeed  : 350,
+
+    closeClick : true,
+    helpers : {
+        title : { 
+            type: 'inside' 
+        },
+        overlay : {
+            css : {
+                'background' : 'rgba(0,0,0,0.8)'
+            }
+        }
+    }
+});
+
+
+
+
+
+
+ 
+
 
 
 
