@@ -3,7 +3,7 @@ module.exports = function () {
 
     // import mongoose library
     var mongoose = require("mongoose");
-    var connectionString = 'mongodb://127.0.0.1:27017/test_1';
+    var connectionString='mongodb://amardeep0070:webdev123!@ds033086.mlab.com:33086/amar'
     // if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     //     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
     //         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
