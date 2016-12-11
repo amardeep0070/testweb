@@ -65,11 +65,11 @@ module.exports = function(app,model) {
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
     var facebookConfig = {
-        clientID     : '906849209415454',
+        clientID     : '1620879274873343',
         //process.env.FACEBOOK_CLIENT_ID,
-        clientSecret :'7d155cf52f3657a37c25983118f1ab40',
+        clientSecret :'7f15c443f97337fa8a2bb1e1217c72d6',
         //process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : 'http://127.0.0.1:3000/auth/facebook/callback'
+        callbackURL  : 'https://nameless-oasis-99912.herokuapp.com/auth/facebook/callback'
         //process.env.FACEBOOK_CALLBACK_URL
     };
 
