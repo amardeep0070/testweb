@@ -1,95 +1,131 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-    <div class="row">
-            <div class="col-sm-4 container hidden-xs "  >
-            <p class ="navbar-text pull-left">
-                <a href="#/user/{{model.id}}/website" class="navbar-link">
-                    <span class = "glyphicon glyphicon-chevron-left"></span>
+        <div class="row">
+            <div class="col-sm-4 container hidden-xs ">
+                <p class="navbar-text pull-left">
+                    <a href="#/user/{{model.id}}/website" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </p>
+                <a class="navbar-brand" id="Profile " href="#/user/{{model.id}}/website">
+                    Websites
                 </a>
-            </p>
-            <a class="navbar-brand" id= "Profile "href="#/user/{{model.id}}/website">
-                Websites
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="" class="navbar-link " >
-                    <span ng-click="model.newWebsite(model.website)" class="glyphicon glyphicon-plus"></span>
-                </a>
-            </p>
+                <p class="navbar-text pull-right">
+                    <a href="" class="navbar-link ">
+                        <span ng-click="model.newWebsite(model.website)" class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </p>
             </div>
-        <div class="col-sm-8 container">
-            <p class ="navbar-text pull-left">
-                <a href="#/user/{{model.id}}/website" class="navbar-link  visible-xs ">
-                    <span id="left-website-new"class = "glyphicon glyphicon-chevron-left"></span>
+            <div class="col-sm-8 container">
+                <p class="navbar-text pull-left">
+                    <a href="#/user/{{model.id}}/website" class="navbar-link  visible-xs ">
+                        <span id="left-website-new" class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </p>
+                <a class="navbar-brand" href="#/user/{{model.id}}/website">
+                    New Website
                 </a>
-            </p>
-            <a class="navbar-brand" href="#/user/{{model.id}}/website">
-                New Website
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="" class="navbar-link ">
-                    <span ng-click="model.newWebsite(model.website)" id="ok-glyphicon-dualpane" class="glyphicon glyphicon-ok"></span>
-                </a>
-            </p>
+                <p class="navbar-text pull-right">
+                    <a type="submit" href="" class="navbar-link ">
+                        <span ng-click="model.newWebsite(model.website)" id="ok-glyphicon-dualpane"
+                              class="glyphicon glyphicon-ok"></span>
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
-    </div>
 </nav>
+
 <div class="container">
     <div class="row ">
         <div class="col-sm-4 hidden-xs dualScroll">
 
 
+            <div ng-repeat="website in model.websiteList">
+                <ul class="list-inline" ng-model="model.website.websiteName">
+                    <a href="#/user/{{model.id}}/website/{{website._id}}/page"> {{website.name}}</a>
+                    <a class="pull-right" href="#/user/{{model.id}}/website/{{website._id}}	">
+                        <span class="glyphicon glyphicon-cog dualCog"></span>
+                    </a>
 
-                    <div ng-repeat="website in model.websiteList">
-                        <ul class="list-inline" ng-model="model.website.websiteName">
-                            <a href="#/user/{{model.id}}/website/{{website._id}}/page"> {{website.name}}</a>
-                            <a class="pull-right" href="#/user/{{model.id}}/website/{{website._id}}	">
-                                <span class="glyphicon glyphicon-cog dualCog"></span>
-                            </a>
-
-                        </ul>
-                    </div>
-
-    </div>
-        <div class="v-line hidden-xs"></div>
-        <div class="col-sm-8 pull-right hidden-xs dualScrollRightPane"   >
-            <div ng-show="model.error" class="alert alert-danger" role ="alert">{{model.error}}</div>
-           <div >
-            <form>
-                <div class="form-group ">
-                    <label for="Name1">Name</label>
-                    <input ng-model="model.website.websiteName" type="text" class="form-control" id="Name1" placeholder="Name">
-                    <label for="Description1">Description</label>
-                    <textarea ng-model="model.website.description" class="form-control " id="Description1" placeholder="Description" rows="4"></textarea>
-                </div>
-            </form>
+                </ul>
             </div>
 
         </div>
         <div class="v-line hidden-xs"></div>
-        <div class="col-sm-8  visible-xs"   >
-            <div ng-show="model.error" class="alert alert-danger" role ="alert">{{model.error}}</div>
-            <div >
-                <form>
+        <div class="col-sm-8 pull-right hidden-xs dualScrollRightPane">
+            <div id="newWebsiteAlert" ng-show=" newWebsiteForm.$invalid && model.submit" class="alert alert-danger " role="alert">
+
+                <div ng-show="newWebsiteForm.websiteName.$invalid">
+
+
+                    Please Enter Website Name
+
+                </div>
+            </div>
+            <!--<div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>-->
+            <div>
+                <form id="newWebsiteForm" name="newWebsiteForm">
                     <div class="form-group ">
-                        <label for="Name">Name</label>
-                        <input ng-model="model.website.websiteName" type="text" class="form-control" id="Name" placeholder="Name">
-                        <label for="Description">Description</label>
-                        <textarea ng-model="model.website.description" class="form-control " id="Description" placeholder="Description" rows="4"></textarea>
+                        <label for="Name1">Name</label>
+                        <input id="websiteName"required name="websiteName" ng-model="model.website.websiteName" type="text"
+                               class="form-control" id="Name1" placeholder="Name">
+                        <div ng-show="newWebsiteForm.websiteName.$invalid && model.submit">
+
+
+                            Please Enter Website Name
+
+                        </div>
+                        <label for="Description1">Description</label>
+                        <textarea ng-model="model.website.description" class="form-control " id="Description1"
+                                  placeholder="Description" rows="4"></textarea>
                     </div>
                 </form>
             </div>
 
         </div>
-</div>
+        <div class="v-line hidden-xs"></div>
+        <div class="col-sm-8  visible-xs">
+            <div id="newWebsiteAler1t" ng-show=" newWebsiteForm.$invalid && model.submit" class="alert alert-danger " role="alert">
+
+                <div ng-show="newWebsiteForm.websiteName.$invalid">
+
+
+                    Please Enter Website Name
+
+                </div>
+            </div>
+
+
+            <div>
+                <form id="newWebsiteForm1" name="newWebsiteForm">
+                    <div class="form-group ">
+                        <label >Name</label>
+                        <input id="websiteNa1me"required name="websiteName" ng-model="model.website.websiteName" type="text"
+                               class="form-control" id="Namqe1" placeholder="Name">
+                        <div ng-show="newWebsiteForm.websiteName.$invalid && model.submit">
+
+
+                            Please Enter Website Name
+
+                        </div>
+                        <label for="Description">Description</label>
+                        <textarea ng-model="model.website.description" class="form-control " id="Description"
+                                  placeholder="Description" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
 
-            <div class="container">
-                <p class="navbar-text pull-right">
-                    <a href="#/user/{{model.id}}" class="navbar-link pull-right"> <span class="glyphicon glyphicon-user"></span></a>
-                </p>
-            </div>
+        <div class="container">
+            <p class="navbar-text pull-right">
+                <a href="#/user/{{model.id}}" class="navbar-link pull-right"> <span
+                        class="glyphicon glyphicon-user"></span></a>
+            </p>
+        </div>
 
     </nav>
 </div>

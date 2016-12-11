@@ -6,14 +6,16 @@
         .module("WebAppMaker")
         .controller("LoginController",LoginController );
 
-    function LoginController($location, UserService) {
+    function LoginController($location, UserService,$rootScope) {
         var vm=this;
         vm.login = login;  //Good practice
             function login (user) {
 
-            UserService.findUserByCredentials(user.username, user.password)
+            //UserService.findUserByCredentials(user.username, user.password)
+                UserService.login(user.username,user.password)
                 .success(function (user) {
                     if(user!='0'){
+                        $rootScope.currentUser = user;
                         $location.url("/user/" + user._id);
                     }
                     else{
@@ -21,7 +23,10 @@
                     }
                 })
                 .error(function (error) {
-                    console.log("cannot get HTTP")
+                    if(user.username && user.password){
+                        vm.error="User Not found";
+                    }
+
                 })
 
 

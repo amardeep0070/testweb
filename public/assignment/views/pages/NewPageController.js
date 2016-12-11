@@ -12,14 +12,19 @@
         vm.id=$routeParams.uid;
         vm.websiteId=$routeParams.wid;
         function createPage(page) {
-            PageService
-                .createPage(vm.websiteId,page)
-                .success(function (newPage) {
-                    $location.url("user/"+ vm.id+ "/website/"+vm.websiteId +"/page");
-                })
-                .error(function (error) {
+            $('#newPageForm').addClass("ng-submitted")
+            vm.submitted=true;
+            if(page.name){
+                PageService
+                    .createPage(vm.websiteId,page)
+                    .success(function (newPage) {
+                        $location.url("user/"+ vm.id+ "/website/"+vm.websiteId +"/page");
+                    })
+                    .error(function (error) {
 
-                })
+                    })
+            }
+
         }
     }
 })();

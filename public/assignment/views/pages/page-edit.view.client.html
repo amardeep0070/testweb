@@ -18,12 +18,28 @@
 
 
 <div class="container">
+    <div ng-show=" newPageForm.$invalid && model.submitted" class="alert alert-danger" role ="alert">
+
+        <div ng-show="newPageForm.newPageName.$invalid" >
 
 
-    <form>
+                Please Enter Page Name
+
+        </div>
+
+
+    </div>
+
+    <form id="newPageForm" name="newPageForm">
         <div class="form-group">
             <label for="Pagename">Name</label>
-            <input ng-model="model.page.name" type="text" class="form-control" id="Pagename" placeholder="Page Name" value="Blog Post">
+            <input name="newPageName" required ng-model="model.page.name" type="text" class="form-control" id="Pagename" placeholder="Page Name" value="Blog Post">
+        </div>
+        <div ng-show="newPageForm.newPageName.$invalid && model.submitted" >
+
+
+            Please Enter Page Name
+
         </div>
         <div class="form-group">
             <label for="Pagetitle">Title</label>

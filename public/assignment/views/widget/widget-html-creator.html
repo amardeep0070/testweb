@@ -18,12 +18,26 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <div ng-show=" newWidgetForm.$invalid && model.submitted" class="alert alert-danger" role ="alert">
+
+        <div ng-show="newWidgetForm.widgetName.$invalid" >
+
+
+            Please Enter Widget Name
+
+        </div>
+        </div>
+    <form novalidate id="newWidgetForm" name="newWidgetForm">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="model.widget.name">
+            <input name="widgetName" required type="text" class="form-control" id="name" placeholder="Name" ng-model="model.widget.name">
         </div>
+        <div ng-show="newWidgetForm.widgetName.$invalid  && model.submitted" >
 
+
+            Please Enter Widget Name
+
+        </div>
         <div ng-model="model.widget.text"
              text-angular
              ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],

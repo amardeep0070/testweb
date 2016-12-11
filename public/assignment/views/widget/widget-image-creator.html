@@ -19,11 +19,29 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <div ng-show=" newWidgetForm.$invalid && model.submitted  " class="alert alert-danger" role ="alert">
+
+        <div ng-show="newWidgetForm.widgetName.$invalid" >
+
+
+            Please Enter Widget Name
+
+        </div>
+
+
+    </div>
+    <form id="newWidgetForm" name="newWidgetForm" novalidate>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="model.widget.name">
+            <input  name="widgetName"required type="text" class="form-control" id="name" placeholder="Name" ng-model="model.widget.name">
         </div>
+        <div ng-show="newWidgetForm.widgetName.$invalid && model.submitted" >
+
+
+            Please Enter Widget Name
+
+        </div>
+
         <div class="form-group">
             <label for="text">Text</label>
             <input type="text" class="form-control" id="text" placeholder="Your Text Here" ng-model="model.widget.description">
@@ -39,15 +57,15 @@
 
     </form>
     <div class="form-group">
-        <form id="image" action="/api/upload"  method="post" enctype="multipart/form-data">
+        <form  name="imageForm" id="image" action="/api/upload"  method="post" enctype="multipart/form-data">
             <label>Upload</label>
-            <input name="myFile" type="file" class="form-control"/>
-            <input name="width" value="{{model.widget.width}}" style="display: none"/>
-            <input name="widgetId" value="{{model.wgid}}" style="display: none"/>
-            <input name="userId" value="{{model.uid}}" style="display: none"/>
-            <input name="pageId" value="{{model.pid}}" style="display: none"/>
-            <input name="websiteId" value="{{model.wid}}" style="display: none"/>
-            <input name="name" value="{{model.widget.name}}" style="display: none">
+            <input  name="myFile" type="file" class="form-control"/>
+            <input  name="width" value="{{model.widget.width}}" style="display: none"/>
+            <input  name="widgetId" value="{{model.wgid}}" style="display: none"/>
+            <input  name="userId" value="{{model.uid}}" style="display: none"/>
+            <input  name="pageId" value="{{model.pid}}" style="display: none"/>
+            <input  name="websiteId" value="{{model.wid}}" style="display: none"/>
+            <input  name="name" value="{{model.widget.name}}" style="display: none">
             <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
         </form>
     </div>

@@ -1,22 +1,62 @@
  <div class="container">
      <div ng-show="model.error" class="alert alert-danger" role ="alert">
          {{model.error}}</div>
+     <div ng-show="registerForm.$submitted && registerForm.$invalid " class="alert alert-danger" role ="alert">
+
+             <div ng-show="registerForm.username.$invalid" >
+
+
+                     Please Enter a username
+
+             </div>
+             <div ng-show="registerForm.password.$invalid" >
+
+
+                     Please Enter a Password
+
+             </div>
+             <div ng-show="registerForm.verifyPassword.$invalid" >
+
+                     Please Enter a Verify Password
+
+             </div>
+
+     </div>
         <h1>Register</h1>
-        <input type="text"
+     <form name="registerForm" novalidate>
+        <input name="username" type="text" required
                class="form-control"
                ng-model="model.user.username"
                placeholder="username"/>
-        <input type="password"
+         <div ng-show="registerForm.$submitted && registerForm.username.$invalid" >
+
+
+             Please Enter a username
+
+         </div>
+        <input name="password" type="password" required
                class="form-control"
                ng-model="model.user.password"
                placeholder="password"/>
-        <input type="password"
+         <div ng-show="registerForm.$submitted && registerForm.password.$invalid" >
+
+
+             Please Enter a Password
+
+         </div>
+        <input name="verifyPassword" type="password" required
                class="form-control"
                ng-model="model.user.verify"
                placeholder="veryify password"/>
-        <a class="btn btn-primary btn-block" ng-click="model.createUser(model.user)"
-           href="">Register</a>
+         <div ng-show="registerForm.$submitted && registerForm.verifyPassword.$invalid" >
+
+             Please Enter a Verify Password
+
+         </div>
+        <button type="submit" class="btn btn-primary btn-block" ng-click="model.createUser(model.user)"
+           href="">Register</button>
         <a class="btn btn-danger  btn-block"
            href="#login">Cancel</a>
-         {{model.username}}
+     </form>
+         <!--{{model.username}}-->
     </div>

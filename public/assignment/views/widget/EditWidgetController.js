@@ -39,15 +39,20 @@
 
         }
         function updateWidget(widget) {
-            WidgetService
-                .updateWidget(vm.wgid,widget)
-                .success(function (result) {
-                    console.log("widget updated");
-                    $location.url("/user/"+ vm.uid+ "/website/"+ vm.wid+"/page/" + vm.pid+"/widget");
-                })
-                .error(function (error) {
-                    console.log("Sever Error");
-                })
+            $('#newWidgetForm').addClass("ng-submitted")
+            vm.submitted=true;
+            if(widget.name){
+                WidgetService
+                    .updateWidget(vm.wgid,widget)
+                    .success(function (result) {
+                        console.log("widget updated");
+                        $location.url("/user/"+ vm.uid+ "/website/"+ vm.wid+"/page/" + vm.pid+"/widget");
+                    })
+                    .error(function (error) {
+                        console.log("Sever Error");
+                    })
+            }
+
         }
     }
 })();

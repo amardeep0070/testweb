@@ -9,6 +9,15 @@ module.exports = function () {
         password: String,
         firstName: String,
         lastName: String,
+        google: {
+            id: String,
+            token: String,
+            email: String
+        },
+        facebook: {
+            id:    String,
+            token: String
+        },
         email: String,
         dateCreated: {type: Date, default: Date.now},
     }, {collection: "user"});

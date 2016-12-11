@@ -59,11 +59,28 @@
         </div>
         <div class="v-line hidden-xs"></div>
         <div class="col-sm-8 col-sm-8 pull-right hidden-xs dualScrollRightPane">
+            <div id="editwebsiteAlert"ng-show=" editWebsiteForm.$invalid && model.submitted " class="alert alert-danger" role ="alert">
+
+                    <div ng-show="editWebsiteForm.websiteName.$invalid" >
+
+
+                            Please Enter Website Name
+
+                    </div>
+
+
+            </div>
             <div >
-                <form>
+                <form id="editWebsiteForm"  name="editWebsiteForm" novalidate>
                     <div class="form-group">
                         <label for="Name2">Website Name</label>
-                        <input ng-model="model.result.name" type="text" class="form-control" id="Name2" placeholder="Name" >
+                        <input required name="websiteName" ng-model="model.result.name" type="text" class="form-control" id="Name2" placeholder="Name" >
+                        <div ng-show="editWebsiteForm.websiteName.$invalid && model.submitted " >
+
+
+                            Please Enter Website Name
+
+                        </div>
                         <label for="Description2">Website Description</label>
                         <textarea ng-model="model.result.description" rows="4" class="form-control " id="Description2" placeholder="Description"></textarea>
                     </div>
@@ -76,13 +93,30 @@
 
         </div>
     <div class="col-sm-8 col-sm-8 visible-xs">
+        <div id="editwebsiteAlert1"ng-show=" editWebsiteForm.$invalid && model.submitted " class="alert alert-danger" role ="alert">
+
+            <div ng-show="editWebsiteForm.websiteName.$invalid" >
+
+
+                Please Enter Website Name
+
+            </div>
+
+
+        </div>
         <div >
-            <form>
+            <form id="editWebsiteForm1" name="editWebsiteForm" novalidate>
                 <div class="form-group">
-                    <label for="Name">Website Name</label>
-                    <input ng-model="model.result.name" type="text" class="form-control" id="Name" placeholder="Name" >
-                    <label for="Description">Website Description</label>
-                    <textarea ng-model="model.result.description" rows="4" class="form-control " id="Description" placeholder="Description"></textarea>
+                    <label for="Name2">Website Name</label>
+                    <input required name="websiteName" ng-model="model.result.name" type="text" class="form-control" id="Name2" placeholder="Name" >
+                    <div ng-show="editWebsiteForm.websiteName.$invalid && model.submitted " >
+
+
+                        Please Enter Website Name
+
+                    </div>
+                    <label for="Description2">Website Description</label>
+                    <textarea ng-model="model.result.description" rows="4" class="form-control " id="Description2" placeholder="Description"></textarea>
                 </div>
             </form>
         </div>

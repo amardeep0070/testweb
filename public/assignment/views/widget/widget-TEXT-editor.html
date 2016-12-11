@@ -18,9 +18,18 @@
     </div>
 </nav>
 <div class="container">
-    <form>
-        Text
-        <input ng-model="model.widget.text" class="form-control"/>
+    <form id="newWidgetForm" name="newWidgetForm" novalidate>
+        Name
+        <input required name="widgetName" ng-model="model.widget.name" class="form-control"/>
+        <div ng-show="newWidgetForm.widgetName.$invalid && model.submitted" >
+
+
+            Please Enter Widget Name
+
+        </div>
+            Text
+            <input ng-model="model.widget.text" class="form-control"/>
+
         Rows
         <input ng-model="model.widget.rows" class="form-control" type="number"/>
         Placeholder

@@ -13,10 +13,22 @@
                 controller:"LoginController",
                 controllerAs :"model"
             })
+
+            .when("/user", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model",
+                resolve: {
+                    checkLogin: checkLogin
+                }
+            })
             .when("/user/:uid", {
                 templateUrl: "/assignment/views/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve: {
+                    checkLogin: checkLogin
+                }
             })
 
             .when("/register", {
@@ -84,4 +96,21 @@
             })
 
     }
+    function checkLogin($q, UserService, $location) {
+        var deferred = $q.defer();
+        UserService
+            .checkLogin()
+            .success(
+                function (user) {
+                    if(user != '0') {
+                        deferred.resolve();
+                    } else {
+                        deferred.reject();
+                        $location.url("/login");
+                    }
+                }
+            );
+        return deferred.promise;
+    }
+
 })();

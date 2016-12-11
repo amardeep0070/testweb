@@ -57,6 +57,9 @@ module.exports = function () {
                 );
         }
         if(type=='HEADER'){
+            if(widget.size===null){
+                widget.size=1;
+            }
             return widgetModel
                 .update(
                     {
@@ -125,10 +128,55 @@ module.exports = function () {
     }
 
     function deleteWidget(widgetId) {
-        return widgetModel
-            .remove({
-                _id:widgetId
-            })
+        console.log(widgetId);
+        // return widgetModel
+        //                   .remove({
+        //                       _id:widgetId
+        //                   },function (error,w) {
+        //                       widgetModel.find({_page: pageId},function(error,widgets) {
+        //                           widgets.forEach(function (widget) {
+        //                               if (widget.order > deltedWidget.order) {
+        //                                   widget.order--;
+        //                                   widget.save(function () {
+        //                                   });
+        //                               }
+        //                           })
+        //                       })
+        //                   })
+      // //  console.log(widgetModel.findById(widgetId));
+       return findWidgetById(widgetId)
+            .then(function (deltedWidget) {
+                var pid=deltedWidget._page;
+                var or=deltedWidget.order;
+                widgetModel.find({_page: deltedWidget._page},function(error,widgets){
+                    widgets.forEach(function(widget){
+                        if(widget.order>deltedWidget.order){
+                            widget.order--;
+                            widget.save(function(){});
+                        }
+                    })
+
+                })
+                    return  widgetModel
+                        .remove({
+                            _id:widgetId
+                        })
+
+            },
+           function (errr) {
+               console.log(error + "error at dletewidget in server")
+           });
+        // var widgets= widgetModel.find({
+        //     _page:deltedWidget._page
+        // });
+        // for(var w in widgets){
+        //     if(w.order>deltedWidget.order){
+        //         w.order--;
+        //         widgetModel.updateWidget(w,w._id);
+        //     }
+        // }
+
+
     }
     function reorderWidget(pageId, start, end){
         return widgetModel.find({_page: pageId},function(error,widgets){

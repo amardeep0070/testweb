@@ -8,13 +8,15 @@
     function ProfileController($routeParams, UserService,$location) {
         var vm = this;
         vm.updateUser=updateUser;
-        vm.id=$routeParams.uid;
-
+        vm.id="a"
+        vm.logout=logout;
     function init() {
-        UserService.
-            findUserById(vm.id)
+        UserService
+            //findUserById(vm.id)
+            .findCurrentUser()
             .success(function (user) {
                 vm.user=user;
+                vm.id=user._id;
             })
             .error(function (error) {
                 console.log("HTTP error");
@@ -28,6 +30,12 @@
                     $location.url("/user/" +vm.id + "/website");
                 })
 
+        }
+        function logout() {
+            UserService.logout()
+                .success(function(){
+                    $location.url("/login");
+                });
         }
     }
 })();

@@ -14,17 +14,7 @@ module.exports= function (app,model) {
         }
     });
     var upload = multer({ storage: storage });
-    var widgets = [
-        { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO", "name":"boats boats boats", "description":"Boatssss Bro", "order":1 },
-        { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum", "name":"boats boats boats", "description":"Boatssss Bro","order":2 },
-        { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-            "url": "https://9to5mac.files.wordpress.com/2016/09/iphone-7-06.png?w=1270" , "name":"boats boats boats", "description":"Boatssss Bro","order":3},
-        { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>" , "name":"boats boats boats", "description":"Boatssss Bro","order":4 },
-        { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum" , "name":"boats boats boats", "description":"Boatssss Bro","order":5} ,
-        { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-            "url": "https://youtu.be/AM2Ivdi9c4E", "name":"boats boats boats", "description":"Boatssss Bro","order":6 },
-        { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>" , "name":"boats boats boats", "description":"Boatssss Bro" ,"order":7}
-    ];
+
     app.get("/api/page/:pageId/widget",findAllWidgetsForPage);
     app.get("/api/widget/:widgetId",findWidgetById);
     app.delete("/api/widget/:widgetId",deleteWidget);
@@ -72,10 +62,12 @@ module.exports= function (app,model) {
     }
 
     function deleteWidget(req,res) {
+
         var widgetId=req.params.widgetId;
         widgetModel.deleteWidget(widgetId)
             .then(
                 function (success) {
+                  //  console.log(success)
                     res.send(200);
                 },
                 function (error) {

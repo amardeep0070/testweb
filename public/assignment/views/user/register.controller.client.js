@@ -5,7 +5,7 @@
     angular
         .module("WebAppMaker")
         .controller("RegisterController",RegisterController)
-    function RegisterController(UserService,$location) {
+    function RegisterController(UserService,$location,$rootScope) {
         var vm=this;
         vm.createUser=createUser;
         function createUser(user) {
@@ -25,12 +25,19 @@
                             user.firstName= user.username,
                             user.lastName=user.username,
                             user.email=user.username + "@gmail.com"
+
+
                         //Creating new User.
                         UserService
                             .createUser(user)
                             .success(function (result) {
                                 if (result) {
-                                    $location.url("/user/" + result._id);
+                                    $rootScope.currentUser = result;
+                                    UserService.login(user.username,user.password)
+                                        .then(function (success) {
+                                            $location.url("/user/" + success._id);
+                                        })
+
                                 } else {
                                     vm.error = "User does not exit";
                                 }
@@ -41,17 +48,17 @@
 
                     }
                     else {
-                        if (user.username === undefined || user.username==="") {
-                            vm.error = "Please enter a username";
-
-                        }
-                        else if (user.password === undefined || user.verify === undefined || user.password==="" || user.verify==="") {
-                            vm.error = "Please enter both the passwords";
-
-                        }
-                        else if (user.password !== user.verify) {
+                        // if (user.username === undefined || user.username==="") {
+                        //     vm.error = "Please enter a username";
+                        //
+                        // }
+                        //  if (user.password === undefined || user.verify === undefined || user.password==="" || user.verify==="") {
+                        //     vm.error = "Please enter both the passwords";
+                        //
+                        // }
+                         if (user.password !== user.verify) {
                             vm.error = "Passwords dont match";
-                        }
+                         }
 
                     }
                 }

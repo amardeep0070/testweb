@@ -20,19 +20,24 @@
             $location.url("/user/" + vm.uid+ "/website/" + vm.wid + "/page/" + vm.pid + "/widget/new/" + type );
         }
         function createWidget(widget) {
+            $('#newWidgetForm').addClass("ng-submitted")
+            vm.submitted=true;
             // var temp = new Date().getTime()+"";
             // widget._id= temp.substr(temp.length-4);
             widget.type=vm.type.toUpperCase();
             console.log(widget.type);
-           WidgetService
-               .createWidget(vm.pid,widget)
-               .success(function (result) {
-                  // console.log("Widget Created");
-                   $location.url("/user/" + vm.uid+ "/website/" + vm.wid+ "/page/" + vm.pid + "/widget");
-               })
-               .error(function (error) {
-                   console.log("server error")
-               })
+            if(widget.name){
+                WidgetService
+                    .createWidget(vm.pid,widget)
+                    .success(function (result) {
+                        // console.log("Widget Created");
+                        $location.url("/user/" + vm.uid+ "/website/" + vm.wid+ "/page/" + vm.pid + "/widget");
+                    })
+                    .error(function (error) {
+                        console.log("server error")
+                    })
+            }
+
 
         }
     }

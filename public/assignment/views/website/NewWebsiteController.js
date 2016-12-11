@@ -21,24 +21,43 @@
                 })
         }
         function newWebsite(website) {
-            if(website.websiteName===undefined || website.websiteName===""){
-                vm.error="Please enter a valid name";
-                return
+           $('#newWebsiteForm').addClass("ng-submitted")
+            $('#newWebsiteForm1').addClass("ng-submitted")
+            vm.submit=true;
+           // document.getElementById("newWebsiteForm").submit();
+            // if(website.websiteName===undefined || website.websiteName===""){
+            //     vm.error="Please enter a valid name";
+            //     return
+            // }
+            if(website){
+                if(website.websiteName){
+                    var newWeb={
+                        "name": website.websiteName,
+                        "description": website.description
+                    }
+
+                    WebsiteService
+                        .createWebsite(vm.id,newWeb)
+                        .success(function (newWebsite) {
+                            vm.websiteList=newWebsite;
+                            $location.url("/user/" + vm.id+"/website");
+                        })
+                        .error(function (error) {
+                            console.log("server error");
+                        })
+                }
+                else{
+                    // $('#newWebsiteAlert').attr('class','alert alert-danger')
+                    // $('#newWebsiteAlert1').attr('class','alert alert-danger')
+                    // $('#websiteName').attr('class','form-control red')
+                }
             }
-            var newWeb={
-                "name": website.websiteName,
-                "description": website.description
+            else{
+               //vm.error="Enter a Website Name"
+               // $('#websiteName').attr('class','form-control red')
             }
-            vm.error=undefined;
-            WebsiteService
-                .createWebsite(vm.id,newWeb)
-                .success(function (newWebsite) {
-                    vm.websiteList=newWebsite;
-                    $location.url("/user/" + vm.id+"/website");
-                })
-                .error(function (error) {
-                    console.log("server error");
-                })
+
+
 
         }
 

@@ -32,11 +32,16 @@
 
         }
         function updatePage(page) {
-            PageService
-                .updatePage(vm.pid,page)
-                .success(function (updatedPge) {
-                    $location.url("/user/"+  vm.uid +"/website/"+vm.websiteId +"/page");
-                })
+            $('#newPageForm').addClass("ng-submitted")
+            vm.submitted=true;
+            if(page.name){
+                PageService
+                    .updatePage(vm.pid,page)
+                    .success(function (updatedPge) {
+                        $location.url("/user/"+  vm.uid +"/website/"+vm.websiteId +"/page");
+                    })
+            }
+
 
         }
     }

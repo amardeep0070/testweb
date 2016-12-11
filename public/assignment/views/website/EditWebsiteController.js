@@ -45,14 +45,20 @@
 
         }
         function updateWebsite(newWebsite) {
-            WebsiteService
-                .updateWebsite(vm.wid,newWebsite)
-                .success(function () {
-                    $location.url("/user/" + vm.id+"/website");
-                })
-                .error(function () {
-                    console.log("Server Error")
-                })
+            $('#editWebsiteForm').addClass("ng-submitted")
+            $('#editWebsiteForm1').addClass("ng-submitted")
+            vm.submitted=true;
+            if(newWebsite.name){
+                WebsiteService
+                    .updateWebsite(vm.wid,newWebsite)
+                    .success(function () {
+                        $location.url("/user/" + vm.id+"/website");
+                    })
+                    .error(function () {
+                        console.log("Server Error")
+                    })
+            }
+
         }
 
     }
