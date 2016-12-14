@@ -362,9 +362,9 @@ figure .overlay:hover a {
   transform: scale3d(1, 1, 1);
 }
 figure .buttons {
-  position: absolute;
-  top: 45%;
-  left: 24%;
+  /*position: absolute;*/
+  /*top: 45%;*/
+  /*left: 24%;*/
 }
 figure figcaption {
   padding: 20px 25px;
@@ -402,7 +402,7 @@ figure figcaption p {
 }
 #feature p {
   line-height: 25px;
-  font-size: 14px;
+  font-size: 18px;
   color: #777777;
 }
 #feature .icon {
@@ -1099,4 +1099,21 @@ article {
 .no-overflow{
 
 }
+.navbarHeight{
+  height: 71px;
+}
+.navbar-header .navbar-brand.addPadding{
+  padding: 14px;
+  color:#02bdd5 ;
+}
 
+.gitButtons{
+  margin-top: 60px;
+  position: relative;
+}
+.size18px{
+  font-size: 18px;
+}
+.margin25px{
+  margin-left: 25px;
+}
